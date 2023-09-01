@@ -1,0 +1,359 @@
+label start:
+
+    scene black
+    with Pause(1)
+
+    show title
+    
+    R "Content Warnings: 16+, character death, mild descriptive violence. Please close the game immediately if you are sensitive to these topics."
+    R "This game was created by Ballparkreject and Ethaclone."
+    "BGM was created by Alexander Nakarada. SFX were created by Maou Damashii, THE-MATCHMAKERS, and Mortis Ghost"
+    R "Enjoy?"
+    hide title with fade
+
+    show splash
+
+    play music "audio/Headless-Horsemen.ogg"
+    with Pause(1)
+
+    "You know what you have to do."
+
+    play sound "audio/footsteps.ogg"
+
+    show Ruka_4 with irisout
+    with Pause(1)
+
+    Ruka "''Where is this place? WHO even ARE you?!''"
+    menu:
+        "Answer him":
+            $ nin_ending = nin_ending + 1
+            q "''This is your punishment. It's time for you to pay for your actions in Ballville.''"
+            Ruka "''That only answers one of my questions!''"
+            Ruka "''--And you've got the wrong idea! You're not Boxxer- You have no right!''"
+        "Ignore Him":
+            "You decide to say nothing, for he does not deserve an explanation from you."
+            "You both stand in silence."
+            "You can tell he anticipates your answer."
+
+    "You glance down at a small book you hold. It's clearly worn, aged with time. The book is titled 'Ballville Records'"
+    "In this tiny book holds all the crimes which binds his very fate. You read the book to him, detailing his crimes since the beginning."
+
+    play sound "audio/paperflip.ogg"
+
+    hide Ruka_4
+    show Ruka_3 with fade
+
+
+    "You can feel the air becoming thicker as the tension rises. You can only assume he has gotten the idea with his newfound look of despair."
+    "After a few minutes of reading, you reach the final crime. Even you are surprised by how many atrocities he's committed. You knew he was bad, but didn't think he was THAT bad."
+    "This only deepens your resolve. You close the book and tuck it safely under your arm."
+
+    play sound "audio/closebook.ogg"
+
+    play sound "audio/doom.ogg"
+
+    show Ruka_3 with hpunch
+
+    Ruka "''You can't be serious! If you're so hellbent on being a new 'hero' or something-- then send me to jail like the rest! No need for you to take things into your own hands with this...This FAKE machinery!''"
+
+    "You're almost offended by the accusation. It's time to get started with the plan anyways."
+
+    play sound "audio/machine.ogg"
+
+    "With a click of a few buttons and the flick of switches, the machine begins to whir. This still may not be enough to prove its legitimacy, but you're not here to prove anything."
+
+    hide Ruka_3
+    show Ruka_2 with fade
+
+    Ruka "''---Now hold on a second!''"
+    Ruka "''. . .''"
+    Ruka "''I'll have you know, I'm the worst villain in Ballville for a reason!''"
+    "You could tell his demeanor shifted. He knew you were serious now."
+    "No time to waste. It's time to get this done and over with."
+    "Now time for the annoying part."
+    "Actually getting him attached to the machine."
+    "Knocking him out would most likely be the best option. Good thing you've come prepared."
+
+    menu:
+        "Continue":
+            "Let's get to it."
+
+        "Hesitate":
+            $ nin_ending = nin_ending + 1
+            ". . ."
+
+
+label ending_evaluation:
+    if nin_ending >= 2:
+        jump best_ending
+    elif nin_ending == 1:
+        jump q_secret_ending
+    else:
+        jump normal_ending
+
+
+
+
+
+label q_secret_ending:
+    "With this old room, there was some old damaged pipes left behind. Without a second thought, You'd use your new weapon to knock him unconscious."
+
+    play sound "audio/strike1.ogg"
+
+    hide Ruka_2 with dissolve
+    show death with fade
+
+    "You were successful. Now that he is awake, it's time to put the plan in action."
+    "You wouldn't let his fearful look fool you. You must remind yourself that you are the hero here."
+    q "''There will no longer be a 'villain of Ballville', as there will be more to come after you.''"
+    Ruka "''...This 'heroic' act can only hold up for so long until you're noticed by Boxxer!''"
+    Ruka "''. . .''"
+    Ruka "''Even if you are successful...''"
+    Ruka "''This won't end up well for you either! I'll have people come for me!''"
+    Ruka "''Hell, Even BOXXER will do something about it!''"
+    "You are annoyed by his rambling. You want to get this over with soon."
+    q "''That sounds like a problem for me to deal with later.''"
+    q "''It's none of your concern.''"
+
+    play sound "audio/machine.ogg"
+    "You would activate the final sequence for the machine to function. You couldn't care less about the plan you've sent into motion."
+    "After all, you are still the hero here."
+
+    hide death with dissolve
+    with Pause(1)
+
+    "It is time for you to go."
+
+    "You notice a mirror on the wall. Maybe some self-reflection will be beneficial to you."
+    play sound "audio/footsteps.ogg"
+    show q_h with fade
+    hide splash
+    R "* Despite everything, it's still you."
+    hide q_h
+    show q_s with fade
+    qq "It's me, Q. You just got IMPRACTICAL JOKER'ED"
+    hide q_s
+    show splash
+
+
+    hide splash with dissolve
+    with Pause(1)
+
+    play sound "audio/strike1.ogg"
+    with Pause(1)
+    play sound "audio/strike2.ogg"
+    with Pause(1)
+    play sound "audio/strike3.ogg"
+    with Pause(1)
+    play sound "audio/monster.ogg"
+    with Pause(1)
+    play sound "audio/dead.ogg"
+
+    "It is done."
+
+    scene black with dissolve
+    with Pause(1)
+    $ renpy.quit()
+
+return
+
+
+label best_ending:
+    "You worry if you're actually doing the right thing-- if any good will come from this."
+    q "''. . .''"
+    "Snap out of it."
+    "Of course you're doing the right thing. One less scumbag to deal with for now."
+
+    play sound "audio/footsteps.ogg"
+    show Ruka_2 at left with move
+    hide Ruka_2
+    show Ruka_4 at left
+    show Nin_1 at center with moveinright
+
+    q "''. . .''"
+    q "''Huh? You're not supposed to be here.''"
+    "It looks like his good for nothing sidekick must of followed you here. Oh well, guess you will have to deal with the both of them like you were planning to anyways."
+    Ruka "''Nin?! How did you-''"
+    Ruka "''-You know what? Nevermind. For once, it's actually GOOD you're here.''"
+
+    hide Nin_1
+    show Nin_3
+
+    play sound "audio/toy.ogg"
+
+    Nin "''Of course I'd be here! Wouldn't just let 'ya leave for a loooong time without me!~''"
+    Nin "''Especially when I heard that Kaseo saw you leaving with a stranger... Then I DEFINITELY had to see what you were up to!''"
+
+    hide Nin_3
+    show Nin_1
+
+    Nin "''Now that I'm thinking about it...''"
+    Nin "''What business DO you have with my boss?''"
+
+    hide Nin_1
+    show Nin_3
+
+    play sound "audio/toy.ogg"
+
+    Nin "''If anyone's going to do something real sneaky with my boss, It's going to be me!~''"
+
+    "Something sneaky? Is this guy serious?"
+    "Does he realize what situation he's in? You just can't help but stand in disbelief due to how stupid he is."
+
+    hide Nin_3
+    show Nin_1
+
+    q "''I don't believe you are comprehending the situatuion at all. In reality, I want nothing to do with either of you past this moment.''"
+    q "''Once I rid the world of idiots like you and low-lifes like your 'boss' over there, Ballville will be actually safe.''"
+    q "''The current hero does nothing but fool around and entertain your antics, but I have no tolerance for creatures like yourselves.''"
+    q "''So why don't you do yourselves a favor and accept your fate? It will be the one 'good' thing that will give any of your pitiful lives worth!''"
+    "You feel quite powerful. The ball is in your court now."
+    Ruka "''You sound like you're trying too hard to keep up this heroic persona.''"
+
+    hide Ruka_4
+    show Ruka_1 at left
+
+    Ruka "''Are you sure you're not just some villain who is too intimidated by me to step to the plate?''"
+
+    hide Nin_1
+    show Nin_2
+
+    Nin "''Hey! It's one thing to call ME all those things, but you're out of your mind if you think I would let you say things like that about MY boss!''"
+
+    "You couldn't even resist as your palm hit your forehead. There is clearly nothing that will get through to him. It may be better to skip to the point."
+
+    q "''That won't matter soon. I've waited too long.''"
+    q "''It's time to move onto the plan for real this time.''"
+    q "''Starting with the intruder.''"
+    q "''After I'm finished with you, then I'll move onto the main event.''"
+
+    hide Nin_2
+    hide Ruka_1
+    show Nin_4
+    show Ruka_3 at left
+
+    Nin "''I don't really think either of those things will be happening.''"
+    Nin "''I don't care if you threaten me... But I definitely won't let anything happen to Ruka.''"
+
+    "Such a drastic change of tone... You assume he is going for the 'tough guy' act to make you back down, but you're too determined to let that happen."
+    "You decide the best action is to grab the nearest weapon and take a shot at it. Conveniently, there just so happens to be a heavy enough pipe in reach due to the poor condition of the room."
+    "Sure, he has a knife. It's doubtful someone like him knows how to use it though, based on the brain power he has shown."
+    "You decide to take your chances and swing."
+
+    play sound "audio/pipe.ogg"
+    hide Nin_4 with moveoutright
+
+
+
+    ". . ."
+    "You missed."
+
+    play sound "audio/strike1.ogg"
+    hide Ruka_3
+    hide splash with dissolve
+    with Pause(1)
+
+    show blur1 with fade
+    with Pause(1)
+    hide blur1 with dissolve
+    show blur2 with fade
+    with Pause(1)
+    hide blur2 with dissolve
+    show blur3 with fade
+
+    play sound "audio/shock.ogg"
+    "You suddenly are awake, but you don't remember sleeping."
+    "You must have failed the encounter- there is no way around that."
+    play sound "audio/doom.ogg"
+    "You attempt to move to no avail. You understand the situation now as your own feelings of dread sink in."
+
+
+    Ruka "''Look who's cornered now!''"
+    Nin "''. . . ''"
+    Ruka "''I'd say it's time to figure out what this machine REALLY does!''"
+
+    play sound "audio/heartbeat.ogg"
+    "You feel your heart beating in your throat. No way could you have predicted how badly this was going to go."
+    q "''Wait! ---This was all some big misunderstanding!''"
+    "Now even you can admit that was a bad lie, but at this point you're willing to try anything."
+    Ruka "''Well I believe you made yourself...''"
+    Ruka "''VERY Clear.''"
+
+    play sound "audio/machine.ogg"
+
+    "You hear the familiar sounds of the machine. This really seems to be the end for you."
+    "Your hero career is ending before it even started in front of your eyes."
+
+    Ruka "''Come on now, Nin.''"
+    Ruka "''Let them experience their own handy-work.''"
+
+    hide blur3 with dissolve
+    with Pause(1)
+    play sound "audio/footsteps.ogg"
+
+
+    play sound "audio/strike1.ogg"
+    with Pause(1)
+    play sound "audio/strike2.ogg"
+    with Pause(1)
+    play sound "audio/strike3.ogg"
+    with Pause(1)
+    play sound "audio/monster.ogg"
+    with Pause(1)
+    play sound "audio/dead.ogg"
+    with Pause(1)
+
+    $ renpy.quit()
+return
+
+
+
+label normal_ending:
+    "With this old room, there was some old damaged pipes left behind. Without a second thought, You'd use your new weapon to knock him unconscious."
+
+    play sound "audio/strike1.ogg"
+
+    hide Ruka_2 with dissolve
+    show death with fade
+
+    "You were successful. Now that he is awake, it's time to put the plan in action."
+    "You wouldn't let his fearful look fool you. You must remind yourself that you are the hero here."
+    q "''There will no longer be a 'villain of Ballville', as there will be more to come after you.''"
+    Ruka "''...This 'heroic' act can only hold up for so long until you're noticed by Boxxer!''"
+    Ruka "''. . .''"
+    Ruka "''Even if you are successful...''"
+    Ruka "''This won't end up well for you either! I'll have people come for me!''"
+    Ruka "''Hell, Even BOXXER will do something about it!''"
+    "You are annoyed by his rambling. You want to get this over with soon."
+    q "''That sounds like a problem for me to deal with later.''"
+    q "''It's none of your concern.''"
+
+    play sound "audio/machine.ogg"
+    "You would activate the final sequence for the machine to function. You couldn't care less about the plan you've sent into motion."
+    "After all, you are still the hero here."
+
+    hide death with dissolve
+    with Pause(1)
+
+    "It is time for you to go."
+
+    hide splash with dissolve
+    with Pause(1)
+
+    play sound "audio/strike1.ogg"
+    with Pause(1)
+    play sound "audio/strike2.ogg"
+    with Pause(1)
+    play sound "audio/strike3.ogg"
+    with Pause(1)
+    play sound "audio/monster.ogg"
+    with Pause(1)
+    play sound "audio/dead.ogg"
+    with Pause(1)
+
+    "It is done."
+
+    scene black with dissolve
+    with Pause(1)
+    $ renpy.quit()
+return
